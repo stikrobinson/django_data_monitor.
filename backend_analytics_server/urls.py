@@ -21,6 +21,7 @@ from django.urls import include, path
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
+    path("admin/", admin.site.urls),
     path("", include("dashboard.urls")),
      # Ruta login/ para la vista LoginView para inicio de sesión, uso de plantilla y alias
      path('login/', auth_views.LoginView.as_view(template_name='security/login.html'), name='login'),
