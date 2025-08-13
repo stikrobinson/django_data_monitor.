@@ -25,7 +25,16 @@ SECRET_KEY = "django-insecure-_yz$w8vkjgl9_raddg4k^_*$e!&(8@njsshsbbxgsh0+$=2w6j
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+CSRF_TRUSTED_ORIGINS = [
+  "https://*.app.github.dev", # Solo si utiliza Codespaces
+  "https://localhost:8000",
+  "http://127.0.0.1:8000"
+]
+
+ALLOWED_HOSTS = [
+  "*",
+]
+
 
 
 # Application definition
@@ -126,4 +135,10 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-API_URL = 'https://jsonplaceholder.typicode.com/posts'
+API_URL = 'https://stikrobinson.pythonanywhere.com/landing/api/index/?format=json'
+
+# Fallo: acceso sin autenticación
+LOGIN_URL = '/login/'
+
+# Éxito: luego de autenticación exitosa
+LOGIN_REDIRECT_URL = '/'
