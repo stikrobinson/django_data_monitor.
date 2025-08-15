@@ -2,23 +2,21 @@
  * For usage, visit Chart.js docs https://www.chartjs.org/docs/latest/
  */
 
-const mydata = JSON.parse(document.getElementById('conteo_subject').textContent);
-
 const pieConfig = {
   type: 'pie',
   data: {
     datasets: [
       {
-        data: [mydata["pack-4"], mydata["consulta"], mydata["clase-presencial"], mydata["clase-unica"], mydata["otros"]],
+        data: datos,
         /**
          * These colors come from Tailwind CSS palette
          * https://tailwindcss.com/docs/customizing-colors/#default-color-palette
          */
-        backgroundColor: ['#0694a2', '#1c64f2', '#7e3af2', '#b1677a', '#817b7cff'],
+        backgroundColor: colores,
         label: 'Dataset 1',
       },
     ],
-    labels: ['Pack de 4 clases virtuales', 'Consulta', 'Clase presencial', 'Clase virtual única', "Otros"],
+    labels: etiquetas,
   },
   options: {
     responsive: true,
@@ -28,6 +26,9 @@ const pieConfig = {
      *  */
     legend: {
       display: false,
+      position: "bottom",
+      align: "top",
+      fullSize: false,
     },
   },
 }
