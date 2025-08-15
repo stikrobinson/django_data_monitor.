@@ -22,7 +22,8 @@ def index(request):
     'pack-4': 0,
     'consulta': 0,
     'clase-unica': 0,
-    'otros': 0
+    'clase-presencial': 0,
+    'otros': 0,
     }
 
     # [INDICADOR 3] - fecha con mas respuestas
@@ -34,7 +35,7 @@ def index(request):
         if subject in conteo_subject:
             conteo_subject[subject] += 1
         else:
-            conteo_subject['otros'] += 1
+            conteo_subject["otros"] += 1
 
         try:
             fecha = post['date']
@@ -57,6 +58,11 @@ def index(request):
 
     # [INDICADOR 4] - 
 
+    # [TABLA]
+    datos_usuario = []
+    for post in posts.values():
+        datos_usuario.append({"nombre": post["name"], "correo": post["email"]})
+
     #datos cargados desde el servidor
     data = {
         'title': "Landing Page' Dashboard",
@@ -65,6 +71,7 @@ def index(request):
          'subject_valor': conteo_subject[valor_mas_repetido],
          'fecha_mas_respuestas': fecha_mas_repetida,
          'valor_fecha_mas_Respuestas': conteo_fechas[fecha_mas_repetida],
-         
+         'datos_usuario': datos_usuario,
+         'conteo_subject': conteo_subject,
     }
     return render(request, 'dashboard/index.html', data)
