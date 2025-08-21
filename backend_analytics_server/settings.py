@@ -137,10 +137,10 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, STATIC_URL),
 ]
 
-STATIC_ROOT = BASE_DIR / "assets"
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 STORAGES = {
-    "assets": {
+    "staticfiles": {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
 }
